@@ -17,8 +17,7 @@
 
 <body>
     <div class="container">
-        <h1>My Webshop</h1>
-        <h1>{{host_ip}}</h1>
+        <h1 class="text-center">My Webshop</h1>
         % if flag==1:
             <p>
                 <div class="input-group input-group-lg">
@@ -36,8 +35,16 @@
             </thead>
             <tbody id="myTable">
                 <tr>
-                    <td>Sample product</td>
-                    <td>Sample price</td>
+                    <td>Sample product 1</td>
+                    <td>10 Eur</td>
+                </tr>
+                <tr>
+                    <td>Sample product 2</td>
+                    <td>12.99 Eur</td>
+                </tr>
+                <tr>
+                    <td>Discounted product</td>
+                    <td>3.5 Eur</td>
                 </tr>
             </tbody>
         </table>
@@ -66,5 +73,11 @@
         
     </script>
 </body>
-
+<footer>
+    <div class="container">
+        <br>
+        <br>
+        <h6>This page is served from node {{host_ip}}</h6>
+    </div>
+</footer>
 </html>
