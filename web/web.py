@@ -1,21 +1,22 @@
 #!/usr/bin/python3
 
-from bottle import route, run, template, get, static_file
-from pprint import pprint
+from bottle import route, run, template, get, static_file, request, redirect
+import os
+import bottle
+import socket
+
+script_dir = os.path.dirname(__file__)
+bottle.TEMPLATE_PATH.insert(0, os.path.join(script_dir, 'views'))
 
 @route('/')
 def index(name='Stranger'):
-    conn = sqlite3.connect('../db.sqlite')
-    c = conn.cursor()
-
-    c.execute("SELECT * FROM hosts")
-
-    data = c.fetchall()
-
-    return template('index', flag=0)
+    file = open('/opt/webshop/config/flag')
+    flag = file.readline()
+    file.close()
+    return template('index',flag=int(flag),host_ip=socket.gethostbyname(socket.gethostname()))
 
 @route('/static/<filepath:path>')
 def server_static(filepath):
-    return static_file(filepath, root='static')
+    return static_file(filepath, root=os.path.join(script_dir, 'static'))
 
-run(host='localhost', port=8080, reloader=True)
+run(host='0.0.0.0', port=8080, reloader=True)
