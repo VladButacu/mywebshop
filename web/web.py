@@ -14,7 +14,7 @@ def index(name='Stranger'):
     flag = file.readline()
     file.close()
     host_ip = socket.gethostbyname(socket.gethostname())
-    hostname=os.system('hostname')
+    hostname = socket.gethostname()
     return template('index',flag=int(flag),host_ip=host_ip,hostname=hostname)
 
 @route('/static/<filepath:path>')
