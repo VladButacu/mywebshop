@@ -13,7 +13,9 @@ def index(name='Stranger'):
     file = open('/opt/webshop/config/flag')
     flag = file.readline()
     file.close()
-    return template('index',flag=int(flag),host_ip=socket.gethostbyname(socket.gethostname()))
+    host_ip = socket.gethostbyname(socket.gethostname())
+    hostname=os.system('hostname')
+    return template('index',flag=int(flag),host_ip=host_ip,hostname=hostname)
 
 @route('/static/<filepath:path>')
 def server_static(filepath):

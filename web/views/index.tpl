@@ -77,7 +77,7 @@
     <div class="container">
         <br>
         <br>
-        <h6>This page is served from node {{host_ip}}</h6>
+        <h6>This page is served from node {{host_ip}} | Container hostname: {{hostname}}</h6>
     </div>
 </footer>
 </html>
